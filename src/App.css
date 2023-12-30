@@ -21,6 +21,9 @@ body {
   margin: 0;
   padding: 0;
 }
+.checked {
+  text-decoration: line-through; /* Apply line-through style to checked items */
+}
 @media only screen and (min-width: 1366px) {
   .main-container {
     border: 1px solid black;

@@ -44,15 +44,14 @@ function App() {
           <div>
             <h1>List items</h1>
             <div
-              style={{
-                width: "150px",
-                textAlign: "start",
-                margin: "0 auto",
-              }}
+              style={{ width: "150px", textAlign: "start", margin: "0 auto" }}
             >
               <ol>
                 {storedList.map((item, index) => (
-                  <li key={index}>
+                  <li
+                    key={index}
+                    className={item.isChecked ? "checked" : ""} // Add a class if checked
+                  >
                     {item.text}{" "}
                     <input
                       type="checkbox"
