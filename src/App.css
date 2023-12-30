@@ -8,7 +8,7 @@ body {
 
 .main-container {
   border: 1px solid black;
-  width: 1000px;
+  width: 100%;
   padding: 20px;
   text-align: center;
   background-color: aqua;
