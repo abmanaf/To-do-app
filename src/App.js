@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [itemName, setItemName] = useState("");
   const [storedList, setStoredList] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +13,17 @@ function App() {
       return;
     }
 
-    setStoredList([...storedList, { text: itemName, isChecked: false }]);
+    if (editIndex !== null) {
+      // Edit existing item
+      const updatedList = [...storedList];
+      updatedList[editIndex].text = itemName;
+      setStoredList(updatedList);
+      setEditIndex(null);
+    } else {
+      // Add new item
+      setStoredList([...storedList, { text: itemName, isChecked: false }]);
+    }
+
     setItemName("");
   };
 
@@ -20,6 +31,16 @@ function App() {
     const updatedList = [...storedList];
     updatedList[index].isChecked = !updatedList[index].isChecked;
     setStoredList(updatedList);
+  };
+
+  const handleEdit = (index) => {
+    setEditIndex(index);
+    setItemName(storedList[index].text);
+  };
+
+  const handleCancel = () => {
+    setEditIndex(null);
+    setItemName(""); // Clear the input field
   };
 
   return (
@@ -31,12 +52,12 @@ function App() {
           type="text"
           value={itemName}
           onChange={(e) => setItemName(e.target.value)}
-        />{" "}
+        />
         <button
           style={{ cursor: "pointer", padding: "5px 5px", fontSize: "15px" }}
           type="submit"
         >
-          Submit
+          {editIndex !== null ? "Update" : "Submit"}
         </button>
       </form>
       <div className="listItems">
@@ -48,11 +69,14 @@ function App() {
             >
               <ol>
                 {storedList.map((item, index) => (
-                  <li
-                    key={index}
-                    className={item.isChecked ? "checked" : ""} // Add a class if checked
-                  >
-                    {item.text}{" "}
+                  <li key={index} className={item.isChecked ? "checked" : ""}>
+                    {editIndex === index ? (
+                      // Display input field for editing
+                      <span>{item.text}</span>
+                    ) : (
+                      // Display item text
+                      item.text
+                    )}
                     <input
                       type="checkbox"
                       id={index}
@@ -60,6 +84,13 @@ function App() {
                       checked={item.isChecked || false}
                       onChange={() => handleCheckboxChange(index)}
                     />
+                    {editIndex === index ? (
+                      <>
+                        <button onClick={handleCancel}>Cancel</button>
+                      </>
+                    ) : (
+                      <button onClick={() => handleEdit(index)}>Edit</button>
+                    )}
                   </li>
                 ))}
               </ol>
