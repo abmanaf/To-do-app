@@ -20,19 +20,19 @@ body {
   padding: 0;
 }
 .checked {
-  text-decoration: line-through; /* Apply line-through style to checked items */
+  text-decoration: line-through;
 }
 @media only screen and (min-width: 1366px) {
+  /*
   body {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+  */
   .main-container {
-    border: 1px solid black;
     width: 100%;
     padding: 20px;
     text-align: center;
-    background-color: aqua;
   }
 }
