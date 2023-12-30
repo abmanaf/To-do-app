@@ -7,7 +7,6 @@ body {
 }
 
 .main-container {
-  border: 1px solid black;
   width: 100%;
   padding: 20px;
   text-align: center;
@@ -22,4 +21,13 @@ body {
   list-style-position: inside;
   margin: 0;
   padding: 0;
+}
+@media only screen and (min-width: 1366px) {
+  .main-container {
+    border: 1px solid black;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    background-color: aqua;
+  }
 }
