@@ -8,9 +8,10 @@ body {
 
 .main-container {
   border: 1px solid black;
-  width: 400px;
+  width: 1000px;
   padding: 20px;
   text-align: center;
+  background-color: aqua;
 }
 
 .listItems {
