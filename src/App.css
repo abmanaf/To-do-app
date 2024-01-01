@@ -23,13 +23,6 @@ body {
   text-decoration: line-through;
 }
 @media only screen and (min-width: 1366px) {
-  /*
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  */
   .main-container {
     width: 100%;
     padding: 20px;

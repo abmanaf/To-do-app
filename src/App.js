@@ -14,13 +14,11 @@ function App() {
     }
 
     if (editIndex !== null) {
-      // Edit existing item
       const updatedList = [...storedList];
       updatedList[editIndex].text = itemName;
       setStoredList(updatedList);
       setEditIndex(null);
     } else {
-      // Add new item
       setStoredList([...storedList, { text: itemName, isChecked: false }]);
     }
 
@@ -40,7 +38,7 @@ function App() {
 
   const handleCancel = () => {
     setEditIndex(null);
-    setItemName(""); // Clear the input field
+    setItemName("");
   };
 
   return (
@@ -70,13 +68,7 @@ function App() {
               <ol>
                 {storedList.map((item, index) => (
                   <li key={index} className={item.isChecked ? "checked" : ""}>
-                    {editIndex === index ? (
-                      // Display input field for editing
-                      <span>{item.text}</span>
-                    ) : (
-                      // Display item text
-                      item.text
-                    )}
+                    {editIndex === index ? <span>{item.text}</span> : item.text}
                     <input
                       type="checkbox"
                       id={index}
